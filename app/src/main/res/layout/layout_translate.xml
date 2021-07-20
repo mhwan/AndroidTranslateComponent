@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="@color/toolbar_background"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/root_input"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin = "8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/root_output"
+            app:layout_constraintVertical_weight="5">
+            <Spinner
+                android:id="@+id/spinner_source_lang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_source_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/sub_title_text"
+                    android:textColorHint="@color/title_text"
+                    android:textSize="16sp"
+                    android:gravity="top"
+                    android:hint="번역할 텍스트를 입력하세요." />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/root_output"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="8dp"
+            app:layout_constraintTop_toBottomOf="@id/root_input"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_weight="5">
+
+            <Spinner
+                android:id="@+id/spinner_target_lang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginTop="6dp"
+                android:id="@+id/tv_target_text"
+                android:layout_width="match_parent"
+                android:textColor="@color/sub_title_text"
+                android:text="번역 결과가 없습니다."
+                android:background="@drawable/bg_translate_result_selector"
+                android:textSize="16sp"
+                android:padding="16dp"
+                android:scrollbars="vertical"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@id/root_input"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_anchorGravity="bottom|right|end"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_translate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00c73c"
+            android:src="@drawable/ic_baseline_spellcheck_24"
+            app:borderWidth="0dp"
+            app:tint="@color/white"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_speak"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00c73c"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_baseline_play_arrow_24"
+            app:borderWidth="0dp"
+            app:tint="@color/white"/>
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
